@@ -12,7 +12,7 @@
 
   
   
-  After downloading the data which contain 4 `.csv` files, we select only records with non-NA values for college majors(FOD1P) and columns of information we need for analysis, then merge data with college major list and combine these 4 `.csv` files into one. After that, we group the data by different majors and summarize their median earnings and employment rate and so on. 
+  After downloading the data which contain 4 `.csv` files, we select only records with non-NA values for college majors(FOD1P) and columns of information we need for analysis, then merge the data frames with college major list by FOD1P and combine these 4 `.csv` files into one. After that, we group the data by different majors and summarize their median earnings and employment rate and so on. 
   
   The `filtermajor.R` in each dataset contains the code we used to filter and merge data files.    
   The `data-processing.R` contains the code we used to filter and group data files, it also contains code used to generate the final result table.
