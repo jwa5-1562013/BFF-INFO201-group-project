@@ -1,20 +1,22 @@
+#install packages
 library("dplyr")
 library("data.table")
 library("bit64")
 
-# Take in Results 
+#Read separated data files 
 resultA <- fread(file = "resultA.csv", stringsAsFactors = FALSE, header = TRUE)
 resultB <- fread(file = "resultB.csv", stringsAsFactors = FALSE, header = TRUE)
 resultC <- fread(file = "resultC.csv", stringsAsFactors = FALSE, header = TRUE)
 resultD <- fread(file = "resultD.csv", stringsAsFactors = FALSE, header = TRUE)
 
+#merge four files into one
 results.df <- rbind(resultA, resultB, resultC, resultD)
 
-# 1&2 are employed, 3 are unemployed, 4-6 are not considered
+# ESR(employment status) is 1 - employed, 2 - employed but not at work, 3 - unemployed, 4,5,6 - other conditions
 results.df$EMPLOYMENT <- ifelse(results.df$ESR == 1 | results.df$ESR == 2 , 1, 0)
-
+# WKHP is Usual hours worked per week past 12 months, if it's bigger than 35, it is a fulltime job, smaller than 35 is parttime job
 results.df$FULLORPART <- ifelse(results.df$WKHP > 35, 1, 0)
-
+#ESR(employment status) of 3 is unemployed
 results.df$UNEMPLOYED <- ifelse(results.df$ESR == 3, 1, 0)
 
 
@@ -88,6 +90,7 @@ total.female.sum$unemployment_rate <- round((total.female.sum$number_unemployed 
 total.grad.sum$unemployment_rate <- round((total.grad.sum$number_unemployed/ total.grad.sum$number_unemployed) * 100, 1 )
 total.all.ages.sum$unemployment_rate <- round((total.all.ages.sum$number_unemployed / total.all.ages.sum$number_employed) * 100, 1)
 
+#write results to csv files
 write.csv(total.male.sum, file = "major-data-sum/sum-male.csv", row.names = FALSE )
 write.csv(total.female.sum, file = "major-data-sum/sum-female.csv", row.names = FALSE)
 write.csv(total.grad.sum, file = "major-data-sum/sum-grad.csv", row.names = FALSE)
