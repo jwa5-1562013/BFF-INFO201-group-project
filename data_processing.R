@@ -4,10 +4,10 @@ library("data.table")
 library("bit64")
 
 #Read separated data files 
-resultA <- fread(file = "resultA.csv", stringsAsFactors = FALSE, header = TRUE)
-resultB <- fread(file = "resultB.csv", stringsAsFactors = FALSE, header = TRUE)
-resultC <- fread(file = "resultC.csv", stringsAsFactors = FALSE, header = TRUE)
-resultD <- fread(file = "resultD.csv", stringsAsFactors = FALSE, header = TRUE)
+resultA <- fread(file = "data/resultA.csv", stringsAsFactors = FALSE, header = TRUE)
+resultB <- fread(file = "data/resultB.csv", stringsAsFactors = FALSE, header = TRUE)
+resultC <- fread(file = "data/resultC.csv", stringsAsFactors = FALSE, header = TRUE)
+resultD <- fread(file = "data/resultD.csv", stringsAsFactors = FALSE, header = TRUE)
 
 #merge four files into one
 results.df <- rbind(resultA, resultB, resultC, resultD)
@@ -33,8 +33,8 @@ female <- filter(results.df, results.df$SEX == 2 & results.df$SCHL == 21)
 # Males with bachelors degree 
 male <- filter(results.df, results.df$SEX == 1 & results.df$SCHL == 21)
 
-
-
+# Recent grads (age < 28) with a bachelors degree
+recent.grads <- filter(results.df, results.df$AGEP < 28)
 
 
 
@@ -74,25 +74,34 @@ male.employment.sum <- summarizeFunction(male)
 female.employment.sum <- summarizeFunction(female)
 grad.employment.sum <- summarizeFunction(grad.degree)
 all.ages.employment.sum <- summarizeFunction(all.ages)
+recent.grads.employment.sum <- summarizeFunction(recent.grads)
 
 male.earnings.sum <- summarizeEarningsFunction(male)
 female.earnings.sum <- summarizeEarningsFunction(female)
 grad.earnings.sum <- summarizeEarningsFunction(grad.degree)
 all.ages.earnings.sum <- summarizeEarningsFunction(all.ages)
+recent.grads.earnings.sum <- summarizeEarningsFunction(recent.grads)
 
-total.male.sum <- merge(male.earnings.sum,male.employment.sum, by = "Major")
-total.female.sum <- merge(female.earnings.sum,female.employment.sum, by = "Major")
-total.grad.sum <- merge(grad.earnings.sum,grad.employment.sum, by = "Major")
-total.all.ages.sum <- merge(all.ages.earnings.sum,all.ages.employment.sum, by = "Major")
+total.male.sum <- merge(male.earnings.sum, male.employment.sum, by = "Major")
+total.female.sum <- merge(female.earnings.sum, female.employment.sum, by = "Major")
+total.grad.sum <- merge(grad.earnings.sum, grad.employment.sum, by = "Major")
+total.all.ages.sum <- merge(all.ages.earnings.sum, all.ages.employment.sum, by = "Major")
+total.recent.grads.sum <- merge(recent.grads.earnings.sum, recent.grads.employment.sum, by = "Major")
 
 total.male.sum$unemployment_rate <- round((total.male.sum$number_unemployed / total.male.sum$number_employed) * 100, 1)
 total.female.sum$unemployment_rate <- round((total.female.sum$number_unemployed / total.female.sum$number_employed) *100, 1)
-total.grad.sum$unemployment_rate <- round((total.grad.sum$number_unemployed/ total.grad.sum$number_unemployed) * 100, 1 )
+total.grad.sum$unemployment_rate <- round((total.grad.sum$number_unemployed/ total.grad.sum$number_employed) * 100, 1 )
 total.all.ages.sum$unemployment_rate <- round((total.all.ages.sum$number_unemployed / total.all.ages.sum$number_employed) * 100, 1)
+total.recent.grads.sum$unemployment_rate <- round((total.recent.grads.sum$number_unemployed / total.recent.grads.sum$number_employed) * 100, 1)
 
 #write results to csv files
-write.csv(total.male.sum, file = "major-data-sum/sum-male.csv", row.names = FALSE )
-write.csv(total.female.sum, file = "major-data-sum/sum-female.csv", row.names = FALSE)
-write.csv(total.grad.sum, file = "major-data-sum/sum-grad.csv", row.names = FALSE)
-write.csv(total.all.ages.sum, file = "major-data-sum/sum-all.csv", row.names = FALSE)
+write.csv(total.male.sum, file = "sum_male.csv", row.names = FALSE )
+write.csv(total.female.sum, file = "sum_female.csv", row.names = FALSE)
+write.csv(total.grad.sum, file = "sum_grad.csv", row.names = FALSE)
+write.csv(total.all.ages.sum, file = "sum_all.csv", row.names = FALSE)
+write.csv(total.recent.grads.sum, file = "recent_grads.csv", row.names = FALSE)
+
+#rm(list=setdiff(ls(), c("july_1960", "july_1987", "july_2014")))
+
+
 
