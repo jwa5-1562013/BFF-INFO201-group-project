@@ -1,6 +1,6 @@
 # Group project: College Majors
   
-  This project uses a dataset from 2012 to 2016 containing information of employment, earnings, sex, college majors, etc., and analysis the relationship between college majors and earnings. 
+  This project uses a dataset from 2012 to 2016 containing information of employment, earnings, sex, college majors, etc., and analyze the relationship between college majors and earnings. 
   
   Our goal is to help college students either with a major or haven't decided one to have a better idea of the economic aspect of their degrees. 
   
