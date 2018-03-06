@@ -19,9 +19,9 @@
 
  
  four main data results:  
-    `Allages.csv`  (All ages and all genders with Bachelor's degrees)  
-    `gradstudent.csv` (All ages and all genders with Master's degrees)    
-    `female.csv` (Females of all ages with Bachelor's degrees)  
-    `male.csv` (Males of all ages with Bachelor's degrees)  
+    `sum_all.csv`  (All ages and all genders with Bachelor's degrees)  
+    `sum_grad.csv` (All ages and all genders with Master's degrees)    
+    `sum_female.csv` (Females of all ages with Bachelor's degrees)  
+    `sum_male.csv` (Males of all ages with Bachelor's degrees)  
  
   All datas contain basic information like **Median earnings**, **25th percentile of earnigns**, **75th percentile of earnings**, **employment**, **unemploy rate**, etc.. 
