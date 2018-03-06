@@ -1,19 +1,19 @@
+#packages required
+library(dplyr)
 library("data.table")
-library("dplyr")
-
-majorC <- fread("csv_pus/ss16pusc.csv")
+#readdatasetC
+majorC <- read.csv("csv_pus/ss16pusc.csv",header=TRUE,stringsAsFactors=FALSE)
+#filter out NA values in FOD1P
 datasetC <- majorC %>%
-            filter(!is.na(FOD1P))
-#write csv datasetC with no-NA majors
-write.csv(datasetC, "majorC.csv", row.names=FALSE)
-#reopen r and only runs dplyr package
-datasetC <- read.csv("majorC.csv", header=TRUE,stringsAsFactors=FALSE)
-majordata <- read.csv("csv_pus/majors-list.csv",header=TRUE,stringsAsFactors=FALSE)
-#merge data with majorlist
-datasetC <- merge(datasetC, majordata,by = "FOD1P")
-#merged data with major
-write.csv(datasetC, "datasetC.csv", row.names=FALSE)
+  filter(!is.na(FOD1P))
 
+#readmajorlist
+majordata <- read.csv("csv_pus/majors-list.csv",header=TRUE,stringsAsFactors=FALSE)
+
+#merge datasets
+datasetC <- merge(datasetC, majordata,by = "FOD1P")
+
+#select columns needed for analysis 
 resultC <- datasetC %>%
   select(FOD1P, Major, Major_Category, SEX, AGEP, SCH, SCHL, ESR, PERNP,WKHP)
 
