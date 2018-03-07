@@ -3,7 +3,6 @@ library("data.table")
 
 all <- fread(file = "data/all.csv", stringsAsFactors = FALSE, header = TRUE)
 recent_grads_2010_2012 <- fread(file = "data/recent_grads_2010_2012.csv", stringsAsFactors = FALSE, header = TRUE)
-male <- fread(file = "data/male.csv", stringsAsFactors = FALSE, header = TRUE)
 female <- fread(file = "data/female.csv", stringsAsFactors = FALSE, header = TRUE)
 grad_degree <- fread(file = "data/grad_degree.csv", stringsAsFactors = FALSE, header = TRUE)
 recent_grads <- fread(file = "data/recent_grads.csv", stringsAsFactors = FALSE, header = TRUE)
@@ -34,7 +33,7 @@ earnings_female <- merge(overall, female, by = c("Major", "Major_Category"), suf
                    mutate(female_share = total_majors_female / total_majors_overall) %>%                  
                    select(Major, Major_Category, median_earnings_overall, female_share)
 
-#
+# Combined the analyzed data frames for a shiny presentation purpose
 combined <- merge(recent_grads_comparison, earning_growth_comparison, by = c("Major", "Major_Category"), suffixes = c("_rgc", "_egc")) %>% 
             merge(grad_comparison, by = c("Major", "Major_Category"), suffixes = c("", "_gc")) %>% 
             merge(earnings_female, by = c("Major", "Major_Category"), suffixes = c("", "_ef"))

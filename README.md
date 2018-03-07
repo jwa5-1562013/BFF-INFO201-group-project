@@ -29,7 +29,8 @@ Main data files:
 * `recent_grads.csv`: only bachelor's degree & age <28 (2012-2016)
 * `grad_degree.csv`: higher than bachelor's degree
 * `recent_grads_2010_2012.csv`: only bachelor's degree & age <28 (2010-2012). Source: [Economic Guide To Picking A College Major GitHub link](https://github.com/fivethirtyeight/data/tree/master/college-majors)
-* `majors_list`: list of majors with their FOD1P codes and major categories. Source: ["What's It Worth?: The Economic Value of College Majors." Georgetown University Center on Education and the Workforce, 2011.](http://cew.georgetown.edu/whatsitworth)
+* `female.csv`: females with only a bachelor's degree
+* `majors_list.csv`: list of majors with their FOD1P codes and major categories. Source: ["What's It Worth?: The Economic Value of College Majors." Georgetown University Center on Education and the Workforce, 2011.](http://cew.georgetown.edu/whatsitworth)
 
 
   The `.csv` files contain headers such as: `Major`, `Major_Category`, `total_majors`, `employed`, `unemployed`, `mean_earnings`, `median_earnings`, `quantile(0.25)`, `quantile(0.75)`, and `unemployment_rate`

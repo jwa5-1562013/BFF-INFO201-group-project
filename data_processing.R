@@ -73,9 +73,6 @@ recent.grads <- filter(results.df, results.df$AGEP < 28 & results.df$SCHL == 21)
 # Females with only a bachelor's degree 
 female <- filter(results.df, results.df$SEX == 2 & results.df$SCHL == 21)
 
-# Males with only a bachelor's degree 
-male <- filter(results.df, results.df$SEX == 1 & results.df$SCHL == 21)
-
 # Those with above a bachelor's degree (Master's, Professional or Doctorate degrees)
 grad.degree <- filter(results.df, results.df$SCHL > 21)
 
@@ -109,9 +106,7 @@ summaryByMajor <- function(df, file_name) {
 
 summaryByMajor(all.ages, "data/all.csv")
 summaryByMajor(recent.grads, "data/recent_grads.csv")
-summaryByMajor(male, "data/male.csv")
 summaryByMajor(female, "data/female.csv")
 summaryByMajor(grad.degree, "data/grad_degree.csv")
-
 summaryByMajor(results.df, "data/overall.csv")
 
