@@ -1,12 +1,12 @@
 library("dplyr")
 library("data.table")
 
-all <- fread(file = "all.csv", stringsAsFactors = FALSE, header = TRUE)
-recent_grads_2010_2012 <- fread(file = "recent_grads_2010_2012.csv", stringsAsFactors = FALSE, header = TRUE)
-male <- fread(file = "male.csv", stringsAsFactors = FALSE, header = TRUE)
-female <- fread(file = "female.csv", stringsAsFactors = FALSE, header = TRUE)
-grad_degree <- fread(file = "grad_degree.csv", stringsAsFactors = FALSE, header = TRUE)
-recent_grads <- fread(file = "recent_grads.csv", stringsAsFactors = FALSE, header = TRUE)
+all <- fread(file = "data/all.csv", stringsAsFactors = FALSE, header = TRUE)
+recent_grads_2010_2012 <- fread(file = "data/recent_grads_2010_2012.csv", stringsAsFactors = FALSE, header = TRUE)
+male <- fread(file = "data/male.csv", stringsAsFactors = FALSE, header = TRUE)
+female <- fread(file = "data/female.csv", stringsAsFactors = FALSE, header = TRUE)
+grad_degree <- fread(file = "data/grad_degree.csv", stringsAsFactors = FALSE, header = TRUE)
+recent_grads <- fread(file = "data/recent_grads.csv", stringsAsFactors = FALSE, header = TRUE)
 
 # Select the 4 columns to be shown ("Major", "Major Category", "Median", "Unemployment Rate")
 # and fix the names by adding the given suffix

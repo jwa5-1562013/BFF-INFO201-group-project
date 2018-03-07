@@ -107,11 +107,11 @@ summaryByMajor <- function(df, file_name) {
   write.csv(file_name, row.names = FALSE)
 }
 
-summaryByMajor(all.ages, "all.csv")
-summaryByMajor(recent.grads, "recent_grads.csv")
-summaryByMajor(male, "male.csv")
-summaryByMajor(female, "female.csv")
-summaryByMajor(grad.degree, "grad_degree.csv")
+summaryByMajor(all.ages, "data/all.csv")
+summaryByMajor(recent.grads, "data/recent_grads.csv")
+summaryByMajor(male, "data/male.csv")
+summaryByMajor(female, "data/female.csv")
+summaryByMajor(grad.degree, "data/grad_degree.csv")
 
 
 
