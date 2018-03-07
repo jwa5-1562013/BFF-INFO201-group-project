@@ -28,7 +28,7 @@ shinyServer(function(input, output) {
            geom_bar(stat = "identity", fill = "purple") + 
            theme(axis.text.x = element_text(angle = 60, hjust = 1), axis.title=element_text(face="bold",size="13"), plot.title=element_text(face="bold", size = "18")) + 
            ylim(0, 85000) + 
-           labs(title = "Earnings Growth without Pursuing Higher than Bachelor's Degree", x="Major", y="Difference in Earnings ($)")
+           labs(title = "Earnings Growth without Pursuing Beyond the Bachelor's Degree", x="Major", y="Difference in Earnings ($)")
   })
   
   #Bar graph showing difference in earnings between bachelor vs graduate degree holders
@@ -38,7 +38,7 @@ shinyServer(function(input, output) {
            geom_bar(stat = "identity", fill = "orange") + 
            theme(axis.text.x = element_text(angle = 60, hjust = 1), axis.title=element_text(face="bold",size="13"), plot.title=element_text(face="bold", size = "18")) +
            ylim(0, 100000) + 
-           labs(title = "Earnings Increased by Pursuing Higher than Bachelor's Degree", x="Major", y="Difference in Earnings ($)")
+           labs(title = "Earnings Increased by Pursuing Beyond the Bachelor's Degree", x="Major", y="Difference in Earnings ($)")
   })
   
   #Scatter plot showing female share in earnings compared to overall earning
