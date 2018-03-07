@@ -39,6 +39,8 @@ combined <- merge(recent_grads_comparison, earning_growth_comparison, by = c("Ma
             merge(grad_comparison, by = c("Major", "Major_Category"), suffixes = c("", "_gc")) %>% 
             merge(earnings_female, by = c("Major", "Major_Category"), suffixes = c("", "_ef"))
 
+write.csv(combined, "data/combined.csv", row.names = FALSE)
+
 
 
 
