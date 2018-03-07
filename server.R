@@ -50,7 +50,8 @@ shinyServer(function(input, output) {
   })
   
   output$table <- renderTable(
-    filter(recent, Major_Category == input$Major_Category) %>% select(Major, median_earnings, total_majors, employed, unemployed)
+    filter(recent, Major_Category == input$Major_Category) %>% 
+    select(Major, median_earnings, total_majors, employed, unemployed) 
   )
   
 })
