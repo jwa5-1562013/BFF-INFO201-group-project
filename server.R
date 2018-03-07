@@ -16,7 +16,7 @@ shinyServer(function(input, output) {
     plot.dfm <- dfm %>% filter(Major_Category == input$Major_Category)
     ggplot(plot.dfm, aes(x = Major, y = value, color=variable)) + 
            geom_bar(aes(fill = variable), stat = "identity", position = "dodge") +
-           theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+           theme(axis.text.x = element_text(angle = 60, hjust = 1), axis.title=element_text(face="bold",size="13"), plot.title=element_text(face="bold", size = "18")) +
            ylim(0, 115000) +
            labs(title = "2010-2012 vs 2012-2016 Recent Graduates Median Earnings Comparison", x = "Major", y = "Median Earnings ($)") 
   })
@@ -25,8 +25,8 @@ shinyServer(function(input, output) {
   output$earningGrowth <- renderPlot({
     plot.df <- df %>% filter(Major_Category == input$Major_Category)
     ggplot(plot.df, aes(x = Major, y = Median_difference_egc)) + 
-           geom_bar(stat = "identity") + 
-           theme(axis.text.x = element_text(angle = 60, hjust = 1)) + 
+           geom_bar(stat = "identity", fill = "purple") + 
+           theme(axis.text.x = element_text(angle = 60, hjust = 1), axis.title=element_text(face="bold",size="13"), plot.title=element_text(face="bold", size = "18")) + 
            ylim(0, 85000) + 
            labs(title = "Earnings Growth without Pursuing Higher than Bachelor's Degree", x="Major", y="Difference in Earnings ($)")
   })
@@ -35,8 +35,8 @@ shinyServer(function(input, output) {
   output$gradCompare <- renderPlot({
     plot.df <- df %>% filter(Major_Category == input$Major_Category)
     ggplot(plot.df, aes(x = Major, y = Median_difference_gc)) + 
-           geom_bar(stat = "identity") + 
-           theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+           geom_bar(stat = "identity", fill = "orange") + 
+           theme(axis.text.x = element_text(angle = 60, hjust = 1), axis.title=element_text(face="bold",size="13"), plot.title=element_text(face="bold", size = "18")) +
            ylim(0, 100000) + 
            labs(title = "Earnings Increased by Pursuing Higher than Bachelor's Degree", x="Major", y="Difference in Earnings ($)")
   })
@@ -45,7 +45,7 @@ shinyServer(function(input, output) {
   output$femaleShare <- renderPlot ({
     ggplot(df, aes(x = female_share, y = median_earnings_overall)) + 
            geom_point(color = c("grey", "red")[(df$Major_Category == input$Major_Category) + 1]) + 
-           theme(axis.text.x = element_text(angle = 60, hjust = 1)) + 
+           theme(axis.text.x = element_text(angle = 60, hjust = 1), axis.title=element_text(face="bold",size="13"), plot.title=element_text(face="bold", size = "18")) + 
            labs(title = "Female Share vs Median Earnings in Majors", x = "Percentage of Females in the Major", y = "Median Earnings ($)")
   })
   
