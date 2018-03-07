@@ -7,6 +7,7 @@ male <- fread(file = "data/male.csv", stringsAsFactors = FALSE, header = TRUE)
 female <- fread(file = "data/female.csv", stringsAsFactors = FALSE, header = TRUE)
 grad_degree <- fread(file = "data/grad_degree.csv", stringsAsFactors = FALSE, header = TRUE)
 recent_grads <- fread(file = "data/recent_grads.csv", stringsAsFactors = FALSE, header = TRUE)
+overall <- fread(file = "data/overall.csv", stringsAsFactors = FALSE, header = TRUE)
 
 # Select the 4 columns to be shown ("Major", "Major Category", "Median", "Unemployment Rate")
 # and fix the names by adding the given suffix
@@ -31,11 +32,12 @@ grad_comparison <- merge(selectFix(recent_grads, "bachelor"), selectFix(grad_deg
                          by = c("Major", "Major_Category")) %>% 
                    mutate(Median_difference = Median_graduate - Median_bachelor)
 
-# Male vs Female Analysis
-gender_comparison <- merge(selectFix(male, "male"), selectFix(female, "female"), 
-                           by = c("Major", "Major_Category")) %>% 
-                     mutate(Median_difference = Median_male - Median_female,
-                            Unemployment_rate_difference = Unemployment_rate_male - Unemployment_rate_female)
+# Male vs Female Analysis (Median Earnings vs. Women's share of majors)
+earnings_female <- merge(overall, female, by = c("Major", "Major_Category"), suffixes = c("_overall", "_female")) %>% 
+                   mutate(female_share = total_majors_female / total_majors_overall) %>%                  
+                   select(Major, Major_Category, median_earnings_overall, female_share)
+                   
+
 
 
 

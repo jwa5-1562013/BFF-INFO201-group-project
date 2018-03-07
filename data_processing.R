@@ -113,5 +113,5 @@ summaryByMajor(male, "data/male.csv")
 summaryByMajor(female, "data/female.csv")
 summaryByMajor(grad.degree, "data/grad_degree.csv")
 
-
+summaryByMajor(results.df, "data/overall.csv")
 
