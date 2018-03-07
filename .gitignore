@@ -1,0 +1,10 @@
+
+# History files
+.Rhistory
+.Rapp.history
+
+# Big Original Data
+ss16pusa.csv
+ss16pusb.csv
+ss16pusc.csv
+ss16pusd.csv
