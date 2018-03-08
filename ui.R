@@ -13,8 +13,7 @@ shinyUI(fluidPage(
     #Sidebar dropdown menu to alter Major Category
     sidebarPanel(
       selectInput("Major_Category", "Major Category:",
-                  choices=unique(df$Major_Category))
-     
+                  choices=sort(unique(df$Major_Category))) # organizes the drop down menu in alphabetical order
     ),
     
     # Create a spot for the plots on individual tabs, also include text descriptions
@@ -54,7 +53,7 @@ shinyUI(fluidPage(
                                         field of Health, in which the females often have shares higher than 50%. Note that the graph does 
                                         not necessarily imply that a causal relationships exists between the two factors, but rather just 
                                         hints at the existence of correlation."))),
-                  tabPanel("Recent Grad Earnings Table 2012-2016", tableOutput("table"))
+                  tabPanel("2012-2016 Major Earning Ranking for Recent Grads", tableOutput("table"))
       )
     )
   )
